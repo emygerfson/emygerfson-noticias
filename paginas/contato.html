@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entre em contato com o EmygerfsonNoticias.">
+    <title>Contato | EmygerfsonNoticias</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-container">
+        <a href="../index.html" class="logo">Emygerfson<span>Noticias</span></a>
+        <nav class="nav-menu">
+            <a href="../index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="propostas.html">Ideias e propostas</a>
+            <a href="comunidade.html">Comunidade</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="pagina-banner">
+        <div class="container">
+            <span class="institucional-etiqueta">FALE CONOSCO</span>
+            <h1>Entre em contato</h1>
+            <p>Tem uma dúvida, sugestão ou informação? Estamos abertos ao diálogo.</p>
+        </div>
+    </section>
+
+    <section class="institucional-container">
+
+        <div class="contato-grid">
+
+            <div class="contato-informacoes">
+                <h2>Vamos conversar?</h2>
+                <p>
+                    Utilize nossos canais de comunicação para enviar dúvidas,
+                    sugestões, informações ou assuntos relacionados ao portal.
+                </p>
+
+                <div class="contato-item">
+                    <span>WhatsApp</span>
+                    <strong>Adicione seu número de atendimento</strong>
+                </div>
+
+                <div class="contato-item">
+                    <span>E-mail</span>
+                    <strong>Adicione seu endereço de e-mail</strong>
+                </div>
+
+                <div class="contato-item">
+                    <span>Localização</span>
+                    <strong>Alumínio – São Paulo</strong>
+                </div>
+
+                <div class="contato-redes">
+                    <h3>Redes sociais</h3>
+                    <p>Adicione aqui os links oficiais dos seus perfis.</p>
+                    <a href="https://www.instagram.com/emy_pontes007" target="_blank"  rel="noopener noreferrer" aria-label="Instagram" class="rede-placeholder">Instagram </a>
+                    <a href="https://www.facebook.com/?locale=pt_BR" target="_blank"  rel="noopener noreferrer" aria-label="Facebook" class="rede-placeholder">Facebook </a>
+                    <a href="https://www.tiktok.com/@emygerfson.pontes" target="_blank"  rel="noopener noreferrer" aria-label="TikTok" class="rede-placeholder">TikTok </a>
+                </div>
+            </div>
+
+            <div class="contato-formulario">
+                <h2>Envie uma mensagem</h2>
+
+                <form id="formContato">
+                    <div class="form-group">
+                        <label for="nomeContato">Nome</label>
+                        <input type="text" id="nomeContato" maxlength="120" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailContato">E-mail</label>
+                        <input type="email" id="emailContato" maxlength="180" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="assuntoContato">Assunto</label>
+                        <select id="assuntoContato" required>
+                            <option value="">Selecione</option>
+                            <option value="Dúvida">Dúvida</option>
+                            <option value="Sugestão">Sugestão</option>
+                            <option value="Informação">Informação</option>
+                            <option value="Outro">Outro assunto</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mensagemContato">Mensagem</label>
+                        <textarea id="mensagemContato" rows="6" maxlength="3000" required></textarea>
+                    </div>
+                    <label class="aceite-comunidade">
+                        <input type="checkbox" id="aceiteContato" required>
+                        <span>
+                            Autorizo o envio dos meus dados para que minha mensagem
+                            seja recebida e analisada. Consulte nossa política de privacidade.
+                        </span>
+                    </label>
+
+                    <button type="submit" class="botao-institucional">Enviar mensagem</button>
+                    <p id="retornoContato" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© <span id="anoAtual"></span> EmygerfsonNoticias. A cidade em pauta. A população em primeiro lugar.</p>
+    </div>
+</footer>
+
+<script src="../js/formularios.js"></script>
+</body>
+</html>

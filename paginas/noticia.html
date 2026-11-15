@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Leia as notícias de Alumínio no EmygerfsonNoticias.">
+
+    <title>Notícia | EmygerfsonNoticias</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+
+            <a href="../index.html" class="logo">
+                Emygerfson<span>Noticias</span>
+            </a>
+
+            <nav class="nav-menu">
+                <a href="../index.html">Início</a>
+                <a href="sobre.html">Sobre</a>
+                <a href="noticias.html">Notícias</a>
+                <a href="propostas.html">Propostas</a>
+                <a href="comunidade.html">Comunidade</a>
+                <a href="contato.html">Contato</a>
+            </nav>
+
+        </div>
+    </header>
+
+    <main class="pagina-individual">
+
+        <div class="container">
+
+            <a href="noticias.html" class="voltar-noticias">
+                ← Voltar para notícias
+            </a>
+
+            <article id="conteudoNoticia" class="noticia-completa">
+
+                <p class="carregando-noticia">
+                    Carregando notícia...
+                </p>
+
+            </article>
+
+            <div class="compartilhar-noticia">
+                <button id="btnCompartilhar" type="button">
+                    Compartilhar notícia
+                </button>
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>
+                © <span id="anoAtual"></span> EmygerfsonNoticias.
+                A cidade em pauta. A população em primeiro lugar.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("anoAtual").textContent =
+            new Date().getFullYear();
+    </script>
+
+    <script src="../js/noticia.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens | Administração</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<div class="admin-layout">
+
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <h2>Emygerfson<span>Noticias</span></h2>
+            <small>Painel administrativo</small>
+        </div>
+
+        <p class="sidebar-label">MENU PRINCIPAL</p>
+
+        <nav>
+            <a href="./admin.html">Dashboard</a>
+            <a href="./admin-noticias.html">Notícias</a>
+            <a href="./admin-mensagens.html" class="active">Mensagens</a>
+            <a href="../index.html" target="_blank">Ver portal</a>
+        </nav>
+
+        <button id="logoutButton" class="admin-logout" type="button">
+            Sair do painel
+        </button>
+    </aside>
+
+    <main class="admin-main">
+
+        <header class="topbar">
+            <div>
+                <h1>Mensagens recebidas</h1>
+                <p>Gerencie as contribuições e contatos enviados pelo portal.</p>
+            </div>
+
+            <div class="user-area">
+                <span id="nomeUsuario">Administrador</span>
+            </div>
+        </header>
+
+        <section class="mensagens-resumo">
+            <article class="mensagem-resumo-card">
+                <span>Total de mensagens</span>
+                <strong id="totalMensagens">0</strong>
+            </article>
+
+            <article class="mensagem-resumo-card">
+                <span>Novas</span>
+                <strong id="totalNovas">0</strong>
+            </article>
+
+            <article class="mensagem-resumo-card">
+                <span>Em análise</span>
+                <strong id="totalAnalise">0</strong>
+            </article>
+
+            <article class="mensagem-resumo-card">
+                <span>Respondidas</span>
+                <strong id="totalRespondidas">0</strong>
+            </article>
+        </section>
+
+        <section class="mensagens-painel">
+
+            <div class="mensagens-lista">
+                <div class="mensagens-lista-topo">
+                    <h2>Caixa de entrada</h2>
+
+                    <select id="filtroStatus">
+                        <option value="todos">Todos os status</option>
+                        <option value="nova">Novas</option>
+                        <option value="em_analise">Em análise</option>
+                        <option value="respondida">Respondidas</option>
+                        <option value="arquivada">Arquivadas</option>
+                    </select>
+                </div>
+
+                <p id="estadoMensagens" role="status">
+                    Carregando mensagens...
+                </p>
+
+                <div id="listaMensagens"></div>
+            </div>
+
+            <div class="mensagem-detalhes" id="painelDetalhes">
+                <div class="detalhes-vazio">
+                    <h2>Selecione uma mensagem</h2>
+                    <p>As informações da mensagem aparecerão aqui.</p>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</div>
+
+<script src="../js/admin-mensagens.js"></script>
+</body>
+</html>

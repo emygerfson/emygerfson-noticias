@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Notícias | EmygerfsonNoticias</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+            <h2>Emygerfson<span>Noticias</span></h2>
+
+            <nav>
+                <a href="admin.html">Dashboard</a>
+                <a href="admin-noticias.html" class="active">Notícias</a>
+                <a href="../index.html">Ver portal</a>
+                <button id="btnLogout" type="button">Sair</button>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+
+            <header class="admin-topbar">
+                <div>
+                    <h1>Gerenciar notícias</h1>
+                    <p>Cadastre e organize as publicações do portal.</p>
+                </div>
+                <span id="adminNome"></span>
+            </header>
+
+            <section class="noticias-admin">
+
+                <div class="admin-section-title">
+                    <h2 id="formTitulo">Cadastrar notícia</h2>
+                    <p>Preencha os campos abaixo para criar uma publicação.</p>
+                </div>
+
+                <form id="formNoticia">
+
+                    <input type="hidden" id="noticiaId">
+
+                    <div class="form-group">
+                        <label for="titulo">Título</label>
+                        <input
+                            type="text"
+                            id="titulo"
+                            maxlength="200"
+                            required
+                            placeholder="Digite o título da notícia"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resumo">Resumo</label>
+                        <textarea
+                            id="conteudo"
+                            rows="15"
+                            placeholder="Escreva o conteúdo completo da notícia"
+                        ></textarea>
+                        <small>
+                            Utilize títulos, subtítulos, listas e links para organizar sua notícia.
+                        </small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="conteudo">Conteúdo</label>
+                        <textarea
+                            id="conteudo"
+                            required
+                            rows="10"
+                            placeholder="Escreva o conteúdo completo da notícia"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Cidade">Cidade</option>
+                            <option value="Política">Política</option>
+                            <option value="Comunidade">Comunidade</option>
+                            <option value="Esporte">Esporte</option>
+                            <option value="Cultura">Cultura</option>
+                            <option value="Transparência">Transparência</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imagemArquivo">Imagem da notícia</label>
+
+                        <input
+                            type="file"
+                            id="imagemArquivo"
+                            accept="image/jpeg,image/png,image/webp"
+                        >
+
+                        <small>Formatos aceitos: JPG, PNG e WEBP. Limite: 5 MB.</small>
+
+                        <div id="previewImagemContainer" hidden>
+                            <p>Pré-visualização:</p>
+                            <img
+                                id="previewImagem"
+                                alt="Pré-visualização da imagem selecionada"
+                                style="max-width: 300px; width: 100%; border-radius: 8px;"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fonte">Fonte da informação</label>
+                        <input
+                            type="text"
+                            id="fonte"
+                            placeholder="Informe a fonte ou origem da informação"
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Status da publicação</label>
+                        <select id="status">
+                            <option value="rascunho">Salvar como rascunho</option>
+                            <option value="publicada">Publicar notícia</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" id="btnSalvar">
+                            Salvar notícia
+                        </button>
+
+                        <button type="button" id="btnCancelar" hidden>
+                            Cancelar edição
+                        </button>
+                    </div>
+
+                    <p id="mensagemFormulario"></p>
+
+                </form>
+
+                <div class="admin-section-title lista-titulo">
+                    <h2>Publicações cadastradas</h2>
+                    <p>Gerencie as notícias já registradas no sistema.</p>
+                </div>
+
+                <div id="listaNoticias">
+                    Carregando notícias...
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@7/tinymce.min.js"></script>
+    <script src="../js/admin-noticias.js"></script>
+</body>
+</html>

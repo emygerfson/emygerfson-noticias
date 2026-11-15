@@ -1,0 +1,180 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", Arial, sans-serif;
+    background: #F4F7FA;
+    color: #334155;
+    line-height: 1.8;
+}
+
+/* Cabeçalho */
+
+.politica-header {
+    background: #102A43;
+    padding: 22px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    color: #FFFFFF;
+    font-size: 22px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #55B6FF;
+}
+
+.voltar {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.voltar:hover {
+    color: #55B6FF;
+}
+
+/* Conteúdo principal */
+
+.politica-container {
+    max-width: 1000px;
+    width: 90%;
+    margin: 50px auto;
+}
+
+.politica-intro {
+    background: #102A43;
+    color: #FFFFFF;
+    padding: 55px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+}
+
+.etiqueta {
+    color: #55B6FF;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.politica-intro h1 {
+    font-size: 38px;
+    margin: 15px 0;
+}
+
+.politica-intro p {
+    color: #D9E7F2;
+    max-width: 700px;
+    margin-bottom: 20px;
+}
+
+.politica-intro small {
+    color: #AFC4D5;
+}
+
+/* Artigo */
+
+.politica-conteudo {
+    background: #FFFFFF;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(16, 42, 67, 0.06);
+}
+
+.politica-conteudo section {
+    margin-bottom: 38px;
+}
+
+.politica-conteudo h2 {
+    color: #102A43;
+    font-size: 23px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #E5EDF4;
+}
+
+.politica-conteudo p {
+    margin-bottom: 15px;
+    font-size: 15px;
+}
+
+.politica-conteudo ul {
+    padding-left: 25px;
+    margin: 15px 0;
+}
+
+.politica-conteudo li {
+    margin-bottom: 9px;
+    font-size: 15px;
+}
+
+.politica-conteudo a {
+    color: #1677D2;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+}
+
+.contato-privacidade {
+    background: #F4F8FC;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 4px solid #1677D2;
+}
+
+/* Rodapé */
+
+.politica-final {
+    text-align: center;
+    padding: 30px 10px;
+    color: #64748B;
+    font-size: 14px;
+}
+
+.politica-final a {
+    color: #1677D2;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* Responsividade */
+
+@media (max-width: 600px) {
+    .politica-header {
+        padding: 18px 5%;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .politica-container {
+        width: 94%;
+        margin: 25px auto;
+    }
+
+    .politica-intro {
+        padding: 30px 22px;
+    }
+
+    .politica-intro h1 {
+        font-size: 29px;
+    }
+
+    .politica-conteudo {
+        padding: 25px 20px;
+    }
+
+    .politica-conteudo h2 {
+        font-size: 20px;
+    }
+}

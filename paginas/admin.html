@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo | EmygerfsonNoticias</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                EMYGERFSON<span>NOTICIAS</span>
+            </div>
+
+            <p class="sidebar-label">Menu principal</p>
+
+            <nav>
+                <a href="./admin.html" class="active">Dashboard</a>
+                <a href="./admin-noticias.html" id="menuNoticias">Notícias</a>
+                <a href="#" id="menuNovaNoticia">Nova notícia</a>
+                <a href="#" id="menuCategorias">Categorias</a>
+                <a href="./admin-mensagens.html">Mensagens</a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+
+            <header class="topbar">
+                <h2>Painel administrativo</h2>
+
+                <div class="user-area">
+                    <span id="nomeUsuario">Carregando usuário...</span>
+                    <button class="logout-button" id="logoutButton">
+                        Sair
+                    </button>
+                </div>
+            </header>
+
+            <section class="dashboard-content">
+
+                <div class="welcome">
+                    <h1>Olá, <span id="nomeBoasVindas">Administrador</span>!</h1>
+                    <p>Bem-vindo ao gerenciamento do EmygerfsonNoticias.</p>
+                </div>
+
+                <div class="stats-grid">
+
+                    <article class="stat-card">
+                        <p>Total de notícias</p>
+                        <h3 id="totalNoticias" aria-live="polite">--</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Publicadas</p>
+                        <h3 id="noticiasPublicadas" aria-live="polite">--</h3>
+                    </article>
+
+                    <article class="stat-card">
+                        <p>Rascunhos</p>
+                        <h3 id="noticiasRascunho" aria-live="polite">--</h3>
+                    </article>
+
+                </div>
+
+                <div class="dashboard-notice">
+                    <div class="dashboard-section-heading">
+                        <h3>Publicações recentes</h3>
+                        <button type="button" id="atualizarDashboard">Atualizar</button>
+                    </div>
+                    <p id="mensagemDashboard" role="status" aria-live="polite">
+                        Carregando notícias...
+                    </p>
+                    <ul id="noticiasRecentesDashboard"></ul>
+                    <a class="dashboard-link" href="./admin-noticias.html">Gerenciar notícias</a>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/admin.js"></script>
+</body>
+</html>

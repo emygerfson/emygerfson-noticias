@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Participe do EmygerfsonNoticias e compartilhe sugestões para Alumínio-SP.">
+    <title>Comunidade | EmygerfsonNoticias</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="container header-container">
+        <a href="../index.html" class="logo">Emygerfson<span>Noticias</span></a>
+        <nav class="nav-menu">
+            <a href="../index.html">Início</a>
+            <a href="sobre.html">Sobre</a>
+            <a href="noticias.html">Notícias</a>
+            <a href="propostas.html">Ideias e propostas</a>
+            <a href="comunidade.html">Comunidade</a>
+            <a href="contato.html">Contato</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="pagina-banner">
+        <div class="container">
+            <span class="institucional-etiqueta">SUA VOZ TEM ESPAÇO</span>
+            <h1>Comunidade</h1>
+            <p>Um espaço para ouvir, compartilhar e discutir os assuntos de Alumínio.</p>
+        </div>
+    </section>
+
+    <section class="institucional-container">
+
+        <div class="comunidade-intro">
+            <h2>O que precisa melhorar no seu bairro?</h2>
+            <p>
+                Queremos conhecer as necessidades e ideias dos moradores.
+                Conte o que acontece na sua região e ajude a dar visibilidade
+                aos assuntos que merecem atenção.
+            </p>
+        </div>
+
+        <div class="comunidade-grid">
+            <article class="comunidade-card">
+                <span>01</span>
+                <h3>Relate um problema</h3>
+                <p>Compartilhe informações sobre situações que precisam de atenção na cidade.</p>
+            </article>
+
+            <article class="comunidade-card">
+                <span>02</span>
+                <h3>Envie uma sugestão</h3>
+                <p>Apresente ideias que possam contribuir com seu bairro e com o município.</p>
+            </article>
+
+            <article class="comunidade-card">
+                <span>03</span>
+                <h3>Compartilhe uma pauta</h3>
+                <p>Indique acontecimentos e assuntos de interesse da comunidade.</p>
+            </article>
+        </div>
+
+        <section class="formulario-comunidade">
+            <div>
+                <span class="institucional-etiqueta">PARTICIPE</span>
+                <h2>Envie sua contribuição</h2>
+                <p>Preencha os campos abaixo. Evite incluir dados pessoais de terceiros ou informações privadas.</p>
+            </div>
+
+            <form id="formComunidade">
+                <div class="form-group">
+                    <label for="nomeComunidade">Seu nome</label>
+                    <input type="text" id="nomeComunidade" maxlength="120" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="bairroComunidade">Bairro</label>
+                    <input type="text" id="bairroComunidade" maxlength="120" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="textoComunidade">Sua mensagem</label>
+                    <textarea
+                        id="textoComunidade"
+                        rows="6"
+                        maxlength="3000"
+                        required
+                        placeholder="Conte sua sugestão ou relato..."
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="mensagemComunidade">Sua mensagem</label>
+                    <textarea id="mensagemComunidade" rows="6" maxlength="3000" required placeholder="Conte sua sugestão ou relato..."></textarea>
+                </div>
+
+                <label class="aceite-comunidade">
+                    <input type="checkbox" id="aceiteComunidade" required>
+                    <span>Autorizo o envio dessas informações para análise e contato sobre esta contribuição. Estou ciente de que o envio não garante publicação.</span>
+                </label>
+
+                <button type="submit" class="botao-institucional">Enviar contribuição</button>
+                <p id="retornoComunidade" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <div class="institucional-aviso">
+            As contribuições deverão ser analisadas antes de qualquer divulgação.
+            Não publique denúncias com acusações não verificadas, dados pessoais
+            sensíveis ou informações que coloquem alguém em risco.
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <p>© <span id="anoAtual"></span> EmygerfsonNoticias. A cidade em pauta. A população em primeiro lugar.</p>
+    </div>
+</footer>
+
+<script src="../js/formularios.js"></script>
+</body>
+</html>

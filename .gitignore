@@ -1,0 +1,30 @@
+﻿# Dependências
+node_modules/
+**/node_modules/
+
+# Arquivos de ambiente e segredos
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Uploads e arquivos enviados pelos usuários
+uploads/
+**/uploads/
+
+# Bancos de dados locais
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+desktop.ini
