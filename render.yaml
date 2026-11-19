@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: emygerfson-noticias-api
+    runtime: node
+    plan: free
+    rootDir: backEnd
+    buildCommand: pnpm install --frozen-lockfile
+    startCommand: pnpm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: FRONTEND_URL
+        value: https://emygerfson-noticias.infinityfree.io

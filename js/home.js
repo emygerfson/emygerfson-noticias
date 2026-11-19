@@ -2,8 +2,7 @@
 // NOTÍCIAS RECENTES DA PÁGINA INICIAL
 // ========================================
 
-// const API_URL = "http://127.0.0.1:3333/api";
-const API_URL = "https://ep-royal-recipe-b60f6bbv.apirest.c-2.sa-east-1.aws.neon.tech/neondb/rest/v1";
+const API_URL = window.API_URL;
 
 function obterUrlImagem(imagemUrl) {
     if (/^https?:\/\//i.test(imagemUrl)) return imagemUrl;

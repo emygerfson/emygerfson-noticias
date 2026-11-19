@@ -26,6 +26,9 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3333;
+const emProducao = process.env.NODE_ENV === "production";
+
+app.set("trust proxy", 1);
 
 // Caminho da pasta de uploads.
 const __filename = fileURLToPath(import.meta.url);
@@ -85,8 +88,8 @@ app.use(
 
     cookie: {
       httpOnly: true,
-      secure: false,
-      sameSite: "lax",
+      secure: emProducao,
+      sameSite: emProducao ? "none" : "lax",
       maxAge: 1000 * 60 * 60 * 8,
       path: "/",
     },
@@ -123,7 +126,7 @@ async function iniciarServidor() {
   if (!process.env.DATABASE_URL || !process.env.SESSION_SECRET) {
     console.error("Configure DATABASE_URL e SESSION_SECRET no arquivo .env.");
     process.exit(1);
-  }
+  } 
 
   const conectado = await testarConexao();
 
