@@ -94,6 +94,7 @@ app.use(
       httpOnly: true,
       secure: emProducao,
       sameSite: emProducao ? "none" : "lax",
+      partitioned: emProducao,
       maxAge: 1000 * 60 * 60 * 8,
       path: "/",
     },

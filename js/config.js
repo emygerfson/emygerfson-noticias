@@ -1,1 +1,1 @@
-window.API_URL = "https://backend-noticias-mlh0.onrender.com/";
+window.API_URL = "https://backend-noticias-3.onrender.com/api";

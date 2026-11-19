@@ -17,6 +17,17 @@ const btnCompartilhar = document.getElementById("btnCompartilhar");
 
 let noticiaAtual = null;
 
+const tagsConteudoPermitidas = new Set([
+    "a", "b", "blockquote", "br", "code", "del", "em", "h1", "h2",
+    "h3", "h4", "hr", "i", "li", "ol", "p", "pre", "s", "small",
+    "strong", "sub", "sup", "table", "tbody", "td", "tfoot", "th",
+    "thead", "tr", "u", "ul"
+]);
+
+const tagsConteudoRemovidas = new Set([
+    "embed", "iframe", "math", "object", "script", "style", "svg", "template"
+]);
+
 // Formata a data
 function formatarData(data) {
     if (!data) return "Data não informada";
@@ -41,6 +52,53 @@ function criarElemento(tag, classe, texto) {
     }
 
     return elemento;
+}
+
+function obterLinkSeguro(valor) {
+    if (!valor) return null;
+
+    try {
+        const url = new URL(valor, window.location.href);
+
+        return ["http:", "https:", "mailto:"].includes(url.protocol)
+            ? url.href
+            : null;
+    } catch {
+        return null;
+    }
+}
+
+function copiarConteudoSeguro(origem, destino) {
+    for (const no of origem.childNodes) {
+        if (no.nodeType === Node.TEXT_NODE) {
+            destino.appendChild(document.createTextNode(no.nodeValue || ""));
+            continue;
+        }
+
+        if (no.nodeType !== Node.ELEMENT_NODE) continue;
+
+        const tag = no.tagName.toLowerCase();
+
+        if (tagsConteudoRemovidas.has(tag)) continue;
+
+        if (!tagsConteudoPermitidas.has(tag)) {
+            copiarConteudoSeguro(no, destino);
+            continue;
+        }
+
+        const elemento = document.createElement(tag);
+
+        if (tag === "a") {
+            const href = obterLinkSeguro(no.getAttribute("href"));
+
+            if (href) {
+                elemento.href = href;
+            }
+        }
+
+        copiarConteudoSeguro(no, elemento);
+        destino.appendChild(elemento);
+    }
 }
 
 // Renderiza a notícia na página
@@ -103,17 +161,25 @@ function renderizarNoticia(noticia) {
 
     // Corpo da notícia
     const corpo = criarElemento("div", "corpo-noticia");
+    const documentoConteudo = new DOMParser().parseFromString(
+        noticia.conteudo,
+        "text/html"
+    );
+    const contemMarcacao = Array.from(documentoConteudo.body.childNodes)
+        .some(no => no.nodeType === Node.ELEMENT_NODE);
 
-    // Cada quebra de linha vira um parágrafo
-    const paragrafos = noticia.conteudo
-        .split(/\r?\n/)
-        .map(texto => texto.trim())
-        .filter(texto => texto.length > 0);
+    if (contemMarcacao) {
+        copiarConteudoSeguro(documentoConteudo.body, corpo);
+    } else {
+        const paragrafos = documentoConteudo.body.textContent
+            .split(/\r?\n/)
+            .map(texto => texto.trim())
+            .filter(texto => texto.length > 0);
 
-    paragrafos.forEach(texto => {
-        const paragrafo = criarElemento("p", "", texto);
-        corpo.appendChild(paragrafo);
-    });
+        paragrafos.forEach(texto => {
+            corpo.appendChild(criarElemento("p", "", texto));
+        });
+    }
 
     conteudoNoticia.appendChild(corpo);
 

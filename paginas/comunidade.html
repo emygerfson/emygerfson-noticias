@@ -83,6 +83,17 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="tipoComunidade">Tipo de contribuição</label>
+                    <select id="tipoComunidade" required>
+                        <option value="">Selecione</option>
+                        <option value="Problema no bairro">Problema no bairro</option>
+                        <option value="Sugestão">Sugestão</option>
+                        <option value="Pauta comunitária">Pauta comunitária</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="textoComunidade">Sua mensagem</label>
                     <textarea
                         id="textoComunidade"
@@ -91,11 +102,6 @@
                         required
                         placeholder="Conte sua sugestão ou relato..."
                     ></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="mensagemComunidade">Sua mensagem</label>
-                    <textarea id="mensagemComunidade" rows="6" maxlength="3000" required placeholder="Conte sua sugestão ou relato..."></textarea>
                 </div>
 
                 <label class="aceite-comunidade">

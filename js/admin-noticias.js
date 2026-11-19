@@ -219,21 +219,45 @@ async function carregarNoticias() {
 form.addEventListener("submit", async (evento) => {
     evento.preventDefault();
 
-    const dados = {
-        titulo: document.getElementById("titulo").value.trim(),
-        resumo: document.getElementById("resumo").value.trim(),
-        conteudo: tinymce.get("conteudo").getContent().trim(),
-        categoria: document.getElementById("categoria").value,
-        imagem_url: imagemUrlAtual,
-        fonte: document.getElementById("fonte").value.trim() || null,
-        status: document.getElementById("status").value
-    };
-
     const id = noticiaId.value;
 
     try {
         btnSalvar.disabled = true;
         mensagemFormulario.textContent = "Salvando...";
+
+        const editorConteudo = tinymce.get("conteudo");
+
+        if (!editorConteudo) {
+            throw new Error("O editor do conteúdo não foi inicializado.");
+        }
+
+        const dados = {
+            titulo: document.getElementById("titulo").value.trim(),
+            resumo: document.getElementById("resumo").value.trim(),
+            conteudo: editorConteudo.getContent().trim(),
+            categoria: document.getElementById("categoria").value,
+            imagem_url: imagemUrlAtual,
+            fonte: document.getElementById("fonte").value.trim() || null,
+            status: document.getElementById("status").value
+        };
+
+        const conteudoTexto = editorConteudo.getContent({ format: "text" }).trim();
+
+        if (dados.titulo.length < 5) {
+            throw new Error("O título precisa ter pelo menos 5 caracteres.");
+        }
+
+        if (dados.resumo.length < 10) {
+            throw new Error("O resumo precisa ter pelo menos 10 caracteres.");
+        }
+
+        if (conteudoTexto.length < 10) {
+            throw new Error("O conteúdo precisa ter pelo menos 10 caracteres.");
+        }
+
+        if (!dados.categoria) {
+            throw new Error("Selecione uma categoria.");
+        }
 
         if (imagemSelecionada) {
             const formularioImagem = new FormData();

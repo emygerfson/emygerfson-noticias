@@ -17,18 +17,24 @@ async function criarAdminInicial() {
   const senhaConfigurada = process.env.BOOTSTRAP_ADMIN_PASSWORD;
   const redefinirSenhaConfigurado =
     process.env.BOOTSTRAP_ADMIN_RESET_PASSWORD;
-  const variaveisConfiguradas = [
+  const configuracaoSolicitada = [
     nomeConfigurado,
     emailConfigurado,
     senhaConfigurada,
     redefinirSenhaConfigurado,
   ];
 
-  if (variaveisConfiguradas.every((valor) => valor === undefined)) {
+  if (configuracaoSolicitada.every((valor) => valor === undefined)) {
     return;
   }
 
-  if (variaveisConfiguradas.some((valor) => !valor?.trim())) {
+  const credenciaisBootstrap = [
+    nomeConfigurado,
+    emailConfigurado,
+    senhaConfigurada,
+  ];
+
+  if (credenciaisBootstrap.some((valor) => !valor?.trim())) {
     throw new Error(
       "Configure BOOTSTRAP_ADMIN_NAME, BOOTSTRAP_ADMIN_EMAIL e BOOTSTRAP_ADMIN_PASSWORD."
     );
