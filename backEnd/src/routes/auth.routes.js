@@ -13,6 +13,7 @@ import {
 } from "../middlewares/auth.middleware.js";
 
 const router = Router();
+const origemFrontendPublico = "https://emygerfson-noticias.infinityfree.io";
 
 // Limita tentativas de login.
 const loginLimiter = rateLimit({
@@ -30,7 +31,12 @@ const loginLimiter = rateLimit({
 function verificarOrigem(req, res, next) {
   const origem = req.get("Origin");
 
-  if (origem && origem !== process.env.FRONTEND_URL) {
+  const origensPermitidas = [
+    process.env.FRONTEND_URL,
+    origemFrontendPublico,
+  ].filter(Boolean);
+
+  if (origem && !origensPermitidas.includes(origem)) {
     return res.status(403).json({
       mensagem: "Origem não autorizada.",
     });

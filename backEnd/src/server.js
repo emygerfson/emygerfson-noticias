@@ -8,6 +8,7 @@ import connectPgSimple from "connect-pg-simple";
 import rateLimit from "express-rate-limit";
 
 import { pool, testarConexao } from "./config/database.js";
+import { prepararBanco } from "./config/database-bootstrap.js";
 
 import authRoutes from "./routes/auth.routes.js";
 
@@ -51,7 +52,10 @@ app.use("/uploads", (req, res, next) => {
 // Permite que o frontend acesse a API.
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL,
+    origin: [
+      process.env.FRONTEND_URL,
+      "https://emygerfson-noticias.infinityfree.io",
+    ].filter(Boolean),
     credentials: true,
   })
 );
@@ -103,7 +107,24 @@ app.use("/api/admin/mensagens", mensagensAdminRoutes);
 // Rota para verificar o funcionamento da API.
 app.get("/api/health", async (req, res) => {
   try {
-    await pool.query("SELECT 1");
+    const resultado = await pool.query(`
+      SELECT
+        to_regclass('public.admins') IS NOT NULL AS admins,
+        to_regclass('public.noticias') IS NOT NULL AS noticias,
+        to_regclass('public.mensagens') IS NOT NULL AS mensagens
+    `);
+
+    const esquemaCompleto = Object.values(resultado.rows[0]).every(
+      (tabelaExiste) => tabelaExiste
+    );
+
+    if (!esquemaCompleto) {
+      return res.status(503).json({
+        status: "erro",
+        message: "O banco está conectado, mas o esquema está incompleto.",
+        database: "esquema_incompleto",
+      });
+    }
 
     return res.status(200).json({
       status: "online",
@@ -132,6 +153,13 @@ async function iniciarServidor() {
 
   if (!conectado) {
     console.error("Servidor não iniciado: verifique o PostgreSQL.");
+    process.exit(1);
+  }
+
+  try {
+    await prepararBanco();
+  } catch (erro) {
+    console.error("Servidor não iniciado: falha ao preparar o banco:", erro.message);
     process.exit(1);
   }
 
