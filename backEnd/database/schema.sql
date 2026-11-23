@@ -54,6 +54,14 @@ ON noticias(publicada_em DESC);
 CREATE INDEX IF NOT EXISTS idx_noticias_autor
 ON noticias(autor_id);
 
+-- TABELA PARA ARMAZENAR IMAGENS DE FORMA PERSISTENTE
+CREATE TABLE IF NOT EXISTS noticias_imagens (
+    nome VARCHAR(255) PRIMARY KEY,
+    mime_type VARCHAR(100) NOT NULL,
+    dados BYTEA NOT NULL,
+    criado_em TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
 -- =========================================
 -- FIM DA ESTRUTURA
 -- =========================================

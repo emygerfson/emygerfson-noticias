@@ -298,6 +298,31 @@ export async function listarNoticiasPublicas(req, res) {
     }
 }
 
+// SERVIR IMAGEM PERSISTIDA NO POSTGRESQL
+export async function buscarImagemPublica(req, res) {
+    try {
+        const resultado = await pool.query(
+            `SELECT mime_type, dados
+             FROM noticias_imagens
+             WHERE nome = $1`,
+            [req.params.nome]
+        );
+
+        if (resultado.rows.length === 0) {
+            return res.status(404).send("Imagem não encontrada.");
+        }
+
+        const imagem = resultado.rows[0];
+        res.setHeader("Content-Type", imagem.mime_type);
+        res.setHeader("Cache-Control", "public, max-age=86400");
+        return res.send(imagem.dados);
+
+    } catch (erro) {
+        console.error("Erro ao carregar imagem da notícia:", erro);
+        return res.status(500).send("Não foi possível carregar a imagem.");
+    }
+}
+
 // =====================================
 // API PÚBLICA - BUSCAR NOTÍCIA POR SLUG
 // =====================================

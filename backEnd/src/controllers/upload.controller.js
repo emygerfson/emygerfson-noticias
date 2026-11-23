@@ -1,4 +1,7 @@
 
+import { randomUUID } from "node:crypto";
+import { pool } from "../config/database.js";
+
 export async function enviarImagemNoticia(req, res) {
     try {
         // Verifica se algum arquivo foi enviado
@@ -8,13 +11,26 @@ export async function enviarImagemNoticia(req, res) {
             });
         }
 
-        // Caminho público da imagem
-        const imagemUrl = `/uploads/noticias/${req.file.filename}`;
+        const extensoes = {
+            "image/jpeg": ".jpg",
+            "image/png": ".png",
+            "image/webp": ".webp"
+        };
+        const nome = `${randomUUID()}${extensoes[req.file.mimetype]}`;
+
+        await pool.query(
+            `INSERT INTO noticias_imagens (nome, mime_type, dados)
+             VALUES ($1, $2, $3)`,
+            [nome, req.file.mimetype, req.file.buffer]
+        );
+
+        // Caminho público persistido no PostgreSQL.
+        const imagemUrl = `/api/noticias/imagem/${nome}`;
 
         return res.status(201).json({
             mensagem: "Imagem enviada com sucesso!",
             imagem_url: imagemUrl,
-            arquivo: req.file.filename
+            arquivo: nome
         });
 
     } catch (erro) {

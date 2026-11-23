@@ -1,6 +1,22 @@
 
 const API_URL = window.API_URL;
 
+function definirImagemIndisponivel(imagem) {
+    if (imagem.dataset.fallback === "true") return;
+
+    imagem.dataset.fallback = "true";
+    imagem.alt = "Imagem indisponível";
+    imagem.src =
+        "data:image/svg+xml;charset=UTF-8," +
+        encodeURIComponent(
+            '<svg xmlns="http://www.w3.org/2000/svg" width="900" height="520">' +
+            '<rect width="100%" height="100%" fill="#E5EAF0"/>' +
+            '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle"' +
+            ' fill="#64748B" font-family="Arial" font-size="24">Imagem indisponível</text>' +
+            '</svg>'
+        );
+}
+
 function obterUrlImagem(imagemUrl) {
     if (/^https?:\/\//i.test(imagemUrl)) return imagemUrl;
 
@@ -43,9 +59,7 @@ function criarCard(noticia) {
         imagem.alt = noticia.titulo;
         imagem.loading = "lazy";
 
-        imagem.onerror = () => {
-            imagem.remove();
-        };
+        imagem.onerror = () => definirImagemIndisponivel(imagem);
 
         artigo.appendChild(imagem);
     }
