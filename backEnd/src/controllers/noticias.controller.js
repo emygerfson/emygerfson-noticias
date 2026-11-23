@@ -315,6 +315,7 @@ export async function buscarImagemPublica(req, res) {
         const imagem = resultado.rows[0];
         res.setHeader("Content-Type", imagem.mime_type);
         res.setHeader("Cache-Control", "public, max-age=86400");
+        res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
         return res.send(imagem.dados);
 
     } catch (erro) {

@@ -41,7 +41,9 @@ const pastaUploads = path.resolve(__dirname, "../uploads");
 const PgSession = connectPgSimple(session);
 
 // Segurança básica dos cabeçalhos HTTP.
-app.use(helmet());
+app.use(helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+}));
 
 // Permite que o frontend carregue imagens hospedadas na API.
 app.use("/uploads", (req, res, next) => {
